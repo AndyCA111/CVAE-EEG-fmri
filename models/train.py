@@ -9,6 +9,7 @@ from torch.nn import functional as F
 from torchvision.utils import save_image 
 import models.utils as ut
 
+path_to_save ='/Users/binxuli/Documents/cs236/proj/eeg2fmri/CVAE-EEG-fmri/result'
 
 def train(model, epoch, train_loader, device, optimizer, class_num):
     model.train()
@@ -43,8 +44,8 @@ def test(model, epoch, test_loader, device, class_num):
                 n = min(data.size(0), 5)
                 comparison = torch.cat([data[:n],
                                       recon_batch.view(-1, 1, 28, 28)[:n]])
-                save_image(comparison.cpu(),
-                         'reconstruction_' + str(f"{epoch:02}") + '.png', nrow=n)
+                save_image(comparison.cpu(), path_to_save +
+                         '/reconstruction_' + str(f"{epoch:02}") + '.png', nrow=n)
 
     test_loss /= len(test_loader.dataset)
     print('====> Test set loss: {:.4f}'.format(test_loss))

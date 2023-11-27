@@ -18,7 +18,7 @@ epochs = 10
 num_class = 10
 # input size
 inputsize = 784 #28*28
-
+path_to_save ='/Users/binxuli/Documents/cs236/proj/eeg2fmri/CVAE-EEG-fmri/result'
 #load train and test
 train_loader = torch.utils.data.DataLoader(
     datasets.MNIST('../data', train=True, download=True,
@@ -36,8 +36,8 @@ for epoch in range(1, epochs + 1):
         train(model, epoch, train_loader, device, optimizer, num_class)
         test(model, epoch, test_loader, device, num_class)
         with torch.no_grad():
-            c = torch.eye(10, 10).cuda()
+            c = torch.eye(10, 10).to(device)
             sample = torch.randn(10, latent_size).to(device)
             sample = model.decode(sample, c).cpu()
-            save_image(sample.view(10, 1, 28, 28),
-                       'sample_' + str(f"{epoch:02}") + '.png')
+            save_image(sample.view(10, 1, 28, 28), path_to_save +
+                       '/sample_' + str(f"{epoch:02}") + '.png')
