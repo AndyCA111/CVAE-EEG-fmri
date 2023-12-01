@@ -28,7 +28,13 @@ test_loader = torch.utils.data.DataLoader(
     datasets.MNIST('../data', train=False, transform=transforms.ToTensor()),
     batch_size=batch_size, shuffle=False)
 
+
+
+
 ############## bulid model #####################################
+
+
+
 model = CVAE(inputsize, latent_size, num_class).to(device)
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
