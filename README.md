@@ -7,7 +7,7 @@ This project was developed by Jiaqi Wu and Binxu Li.
 For more information, reach out to us at jiaqiw01@stanford.edu and andy0207@stanford.edu
 
 ## dataset
-you can download the dataset on https://openneuro.org/datasets/ds002338/versions/2.0.2 and set the path.
+Download the dataset on https://openneuro.org/datasets/ds002338/versions/2.0.2 and set the path.
 
 ## preprocessing, training and evaluation
 
